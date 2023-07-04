@@ -3,3 +3,4 @@ data/clean_data/
 reports/
 notebooks/
 .vscode
+functions/__pycache__

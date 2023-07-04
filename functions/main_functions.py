@@ -56,12 +56,14 @@ def create_clean_dataset(df_cdp_concatenated):
         "industry",
     ]
 
+    print("Imputing some missing categorical values: Start")
     for acc in tqdm(df_cdp_clean.account_id.unique()):  # 13 minutes
         df_acc = df_cdp_clean[df_cdp_clean.account_id == acc]
         for col in cols_to_impute:
             if df_acc[col].notna().any():
                 curr_col_value = df_acc[col].loc[df_acc[col].first_valid_index()]
                 df_cdp_clean.loc[(df_cdp_clean[col].isna()) & (df_cdp_clean.account_id == acc), col] = curr_col_value
+    print("Imputing some missing categorical values: Done")
 
     # Some country names handling
     df_cdp_clean = df_cdp_clean.replace("USA", "United States of America")
@@ -76,9 +78,12 @@ def clean_CDP_year(path_raw_data, path_clean_data, year, save_years):
     """
     # load base dataframes to merge
     try:
+        print(year, ", trying to load pre cleaned dataset")
         df_year_clean = pd.read_excel(path_clean_data + "year.xlsx")
 
     except FileNotFoundError:
+        print(year, ", loading of pre cleaned dataset failed, reconstructing it")
+
         dict_year_to_func = {
             2015: get_df_year_clean_2015,
             2016: get_df_year_clean_2016,
@@ -94,9 +99,13 @@ def clean_CDP_year(path_raw_data, path_clean_data, year, save_years):
         df_year_clean["questionnaire_year"] = year
 
         if save_years == "csv":
-            df_year_clean.to_csv("cdp_" + str(year) + "_dataset_clean.csv", index=False)
+            print(year, ", saving dataset: Start")
+            df_year_clean.to_csv(path_clean_data + "cdp_" + str(year) + "_dataset_clean.csv", index=False)
+            print(year, ", saving specific dataset: Done")
         elif save_years == "xlsx":
-            df_year_clean.to_excel("cdp_" + str(year) + "_dataset_clean.xlsx", index=False)
+            print(year, ", saving specific dataset: Start")
+            df_year_clean.to_excel(path_clean_data + "cdp_" + str(year) + "_dataset_clean.xlsx", index=False)
+            print(year, ", saving specific dataset: Done")
 
     return df_year_clean
 
@@ -111,16 +120,25 @@ def create_CDP_clean_dataset(
     """
     Creates the clean dataset with all available years.
     """
+    print("Loading of year specific datasets: Start")
     lst_df_years = []
     for year in years:
         lst_df_years.append(clean_CDP_year(path_raw_data, path_clean_data, year, save_years))
+    print("Loading of year specific datasets: Done")
 
+    print("Cleaning of the concatenated dataset: Start")
     df_cdp_concatenated = pd.concat(lst_df_years)
     df_cdp_clean = create_clean_dataset(df_cdp_concatenated)
+    print("Cleaning of the concatenated dataset: Done")
 
     if save == "csv":
-        df_cdp_clean.to_csv("cdp_clean_dataset.csv", index=False)
+        print("Saving cleaned dataset: Start")
+        df_cdp_clean.to_csv(path_clean_data + "cdp_clean_dataset.csv", index=False)
+        print("Saving cleaned dataset: Done")
+
     elif save == "xlsx":
-        df_cdp_clean.to_excel("cdp_clean_dataset.xlsx", index=False)
+        print("Saving cleaned dataset: Start")
+        df_cdp_clean.to_excel(path_clean_data + "cdp_clean_dataset.xlsx", index=False)
+        print("Saving cleaned dataset: Done")
 
     return df_cdp_clean
