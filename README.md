@@ -9,7 +9,7 @@ Things not done yet :
 - docstrings
 - unit tests
 - log
-
+___ 
 
 - [About CDP preprocessing 💡](#about)
   - [Context](#context)
@@ -24,7 +24,7 @@ Things not done yet :
 - [Contact ✉️](#contact)
 
 
-# <a id="about"></a> About CDP
+# <a id="about"></a> About CDP preprocessing
 
 ## <a id="context"></a> Context
 
