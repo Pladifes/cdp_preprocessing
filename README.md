@@ -24,30 +24,20 @@ Things not done yet :
 - [Contact ✉️](#contact)
 
 
-# <a id="about"></a> About CGEE
+# <a id="about"></a> About CDP
 
 ## <a id="context"></a> Context
 
-This project aims to estimate <b>corporate greenhouse gas (GHG) emissions</b> using an open methodology based on state-of-the-art literature.
+This project aims to propose <b>CDP preprocessed dataset</b> for researcher to foster their usage of the data. Cleaning is based on an open methodology shared here.
 
-Corporate GHG emissions are a critical issue for understanding and assessing real company transition strategies effectiveness. It is a key indicator to derive <b>transition risk</b> and <b>impact on climate change</b>. As regulation evolves, it is becoming more and more mandatory for companies to disclose their scope 1, 2 and 3 emissions, but the coverage is far from being close to exhaustivity.
-
-To deal with unreported companies, researchers and practitionners rely on estimated data, ususally from well established data providers. However, these estimates : 
-- Often rely on a <b>non-transparent methodology</b>,
-- May not always be <b>accurate</b> (usually based on sectorial means),
-- Can be <b>expensive</b> (>10k $).
-
-**CGEE** (standing for corporate GHG emissions estimations) address these challenges, by leveraging the latest research and best practices to develop a open data science methodology that allows allow for estimating GHG emissions (Scope1, Scope2, Scope 3 and Scope123) accurately using machine learning.
-
-We plan to release an online calculator on our [dedicated website](https://pladifes.institutlouisbachelier.org/) in 2023 and already give free access to researchers to our <b>complete datasets</b>. 
-
+We are currently in discusion with [CDP](https://www.cdp.net/en) to formalise how researchers will be able to acces these datasets through our [website](https://pladifes.institutlouisbachelier.org/), this beeing conditionned by them pre-purchasing the required data to CDP. 
 
 
 ## <a id="pladifes"></a> Pladifes
 
-Pladifes is a research program aiming at easing the research in green and sustainable finance, as well as traditional one. They are the main authors of <b>CGEE</b>. Learn more about Pladifes [here](https://www.institutlouisbachelier.org/en/pladifes-a-large-financial-and-extra-financial-database-project-2/).
+Pladifes is a research program aiming at easing the research in green and sustainable finance, as well as traditional one. They are the main authors of <b>CDP preprocessinf</b>. Learn more about Pladifes [here](https://www.institutlouisbachelier.org/en/pladifes-a-large-financial-and-extra-financial-database-project-2/).
 
-Databases produced in the context of this project are available [here](https://pladifes.institutlouisbachelier.org/data/#ghg-estimations). Other Paldifes databases can be access [here (only ESG)](https://pladifes.institutlouisbachelier.org/data/) and [here (financial and soon ESG)](https://www.eurofidai.org/).
+Databases produced in the context of Pladifes can be access [here (only ESG)](https://pladifes.institutlouisbachelier.org/data/) and [here (financial and soon ESG)](https://www.eurofidai.org/).
 
 # <a id="quickstart"></a> Quickstart 🚀
 
