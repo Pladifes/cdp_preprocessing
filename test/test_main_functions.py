@@ -9,15 +9,10 @@ from src.main_functions import clean_CDP_year, create_CDP_clean_dataset
 
 
 class TestCleanCDPYear(unittest.TestCase):
-    path_raw_data = os.path.abspath("test")
-    path_clean_data = os.path.abspath("test")
-    year = 2014
-    save_years = False
-
     def test_clean_CDP_year_create_empty(self):
         # Set up parameters
-        path_clean_data = os.path.abspath("test")
-        path_clean_data = os.path.abspath("test")
+        path_clean_data = os.path.join("data", "test_data")
+        path_clean_data = os.path.join("data", "test_data")
         year = 2014
         save_years = "xlsx"
 
@@ -53,7 +48,7 @@ class TestCreateCDPCleanDataset(unittest.TestCase):
     def test_create_CDP_clean_dataset(self):
         # Initialize variables or set up necessary data for testing
         years = [2015, 2022]
-        path_clean_data = os.path.abspath("test")
+        path_clean_data = os.path.join("data", "test_data")
         save_years = False
         save_format = False
         expected_columns = [
