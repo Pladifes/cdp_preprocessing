@@ -1,0 +1,12 @@
+{
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.black-formatter"
+    },
+    "python.formatting.provider": "none",
+    "python.analysis.extraPaths": [
+        "./functions"
+    ],
+    "python.linting.flake8Args": [
+        "--max-line-length=120"
+    ]
+}
