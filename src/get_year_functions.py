@@ -14,6 +14,7 @@ def load_useful_sheets(year, path_raw_data):
 
     Parameters:
     - year (int): The year for which the relevant data sheets are to be loaded.
+    - path_raw_data (str): Path to the raw data directory. Defaults to data/raw_data.
 
     Returns:
     - tuple: Depending on the year provided, returns a tuple containing DataFrames for
@@ -96,9 +97,9 @@ def preprocess_covered_countries(df_countries):
         .agg('","'.join)
         .reset_index()
     )
-    df_covered_countries[
-        "covered_countries"
-    ] = df_covered_countries.covered_countries.apply(lambda x: f'["{x}"]')
+    df_covered_countries["covered_countries"] = (
+        df_covered_countries.covered_countries.apply(lambda x: f'["{x}"]')
+    )
     df_covered_countries["covered_countries"] = df_covered_countries[
         "covered_countries"
     ].replace('[""]', "[]")
@@ -266,19 +267,19 @@ def attribute_CF3_to_last_year(df_clean):
     return df_clean
 
 
-def keep_main_boundary(x):
+def keep_main_boundary(boundary):
     """
     Filter non-standard GHG reporting boundaries.
 
     Parameters:
-    - x (str): The boundary type to be checked.
+    - boundary (str): The boundary type to be checked.
 
     Returns:
     - str or np.nan: Returns the input boundary type if it's one of
     ["Operational control", "Financial control", "Equity share"], otherwise returns np.nan.
     """
-    if x in ["Operational control", "Financial control", "Equity share"]:
-        return x
+    if boundary in ["Operational control", "Financial control", "Equity share"]:
+        return boundary
     else:
         return np.nan
 

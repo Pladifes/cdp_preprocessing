@@ -12,6 +12,7 @@ save_years = "xlsx"  # can be "xlsx", "csv" or False
 
 if __name__ == "__main__":
     create_CDP_clean_dataset(
+        path_raw_data=path_raw_data,
         path_clean_data=path_clean_data,
         years=years,
         save_format=save_format,

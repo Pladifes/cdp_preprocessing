@@ -22,7 +22,7 @@ class Get2020(GetGivenYear):
 
     def get_useful_sheets(self, path_raw_data):
         year = 2020
-        return load_useful_sheets(path_raw_data, year)
+        return load_useful_sheets(year, path_raw_data)
 
     def get_all_accounting_year(self, df_years):
         return preprocess_accounting_years(df_years)

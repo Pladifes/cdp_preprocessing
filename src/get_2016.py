@@ -22,7 +22,7 @@ class Get2016(GetGivenYear):
 
     def get_useful_sheets(self, path_raw_data):
         year = 2016
-        return load_useful_sheets(path_raw_data, year)
+        return load_useful_sheets(year, path_raw_data)
 
     def get_covered_countries(self, df_countries):
         return preprocess_covered_countries(df_countries)
@@ -83,7 +83,7 @@ class Get2016(GetGivenYear):
         ]
         return df_CF2
 
-    def get_year_dataset(self):
+    def get_year_dataset(self, path_raw_data):
         (df_countries, df_CF1, df_CF2, df_CF3) = self.get_useful_sheets(path_raw_data)
         df_covered_countries = self.get_covered_countries(df_countries)
         df_CF3_calc = self.get_scopes_3(df_CF3)

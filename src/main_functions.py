@@ -20,11 +20,11 @@ def clean_CDP_year(path_raw_data, path_clean_data, year, save_years):
     Loads or creates the clean CDP dataset for a given year.
 
     Parameters:
+    - path_raw_data (str): The path to the directory where raw datasets are stored.
     - path_clean_data (str): The path to the directory where cleaned datasets are stored.
     - year (int): The specific year for which the dataset is being processed.
-    - save_years (bool or str): Flag indicating whether to save the cleaned dataset for the specific year.
-      If True, saves as default CSV file. If "csv" or "xlsx", specifies the file format to save.
-      Defaults to False (no saving).
+    - save_years (str): Flag indicating whether to save the cleaned dataset for the specific year.
+      If "csv" or "xlsx", saves the file in CSV or EXCEL format.
 
     Returns:
     - pandas.DataFrame: Returns the cleaned dataset for the specified year as a DataFrame.
@@ -93,9 +93,9 @@ def clean_CDP_year(path_raw_data, path_clean_data, year, save_years):
 
 
 def create_CDP_clean_dataset(
-    years=[year for year in range(2015, 2023)],
     path_raw_data=os.path.join("data", "raw_data"),
     path_clean_data=os.path.join("data", "clean_data"),
+    years=[year for year in range(2015, 2023)],
     save_years=False,
     save_format=False,
 ):
@@ -103,13 +103,13 @@ def create_CDP_clean_dataset(
     Creates a clean dataset by aggregating and cleaning data from multiple years.
 
     Parameters:
+    - path_raw_data (str, optional): Path to the raw data directory. Defaults to data/raw_data.
+    - path_clean_data (str, optional): Path to the clean data directory. Defaults to data/clean_data.
     - years (list, optional): A list of years to process. Defaults to range from 2015 to 2022.
-    - path_clean_data (str, optional): Path to the clean data directory. Defaults to the root.
-    - save (bool or str, optional): Flag indicating whether to save the cleaned dataset.
-      If True, saves as default CSV file. If "csv" or "xlsx", specifies the file format to save.
-      Defaults to False (no saving).
-    - save_years (bool, optional): Flag indicating whether to save separate years' datasets.
-      Defaults to False.
+    - save_years (bool or str, optional): Flag indicating whether to save separate years' datasets.
+      Defaults to False. If "csv" or "xlsx", saves the file in CSV or EXCEL format.
+    - save_format (bool or str, optional): Flag indicating whether to save separate years' datasets.
+      Defaults to False. If "csv" or "xlsx", saves the file in CSV or EXCEL format.
 
     Returns:
     - pandas.DataFrame: Returns a cleaned and concatenated DataFrame comprising data from
