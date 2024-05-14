@@ -36,7 +36,7 @@ Databases produced in the context of Pladifes can be access [here (specialized E
 You can download a copy of all the files in this repository by cloning the
 Git repository:
 
-    https://github.com/Pladifes/corporate-ghg-emissions-estimations.git
+    https://github.com/Pladifes/cdp_preprocessing
 
 
 ## <a id="utilization"></a> Utilization
