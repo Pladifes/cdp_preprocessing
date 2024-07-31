@@ -33,11 +33,12 @@ def load_useful_sheets(year, path_raw_data):
             df_CF2 = pd.read_excel(file_path, sheet_name="CC8.3a")
             return (df_countries, df_CF1, df_CF2, df_CF3)
 
-    elif year in [2018, 2019, 2020, 2021, 2022]:
-        if year == 2022:
+    elif year in [2018, 2019, 2020, 2021, 2022, 2023]:
+        if year == 2022 | year == 2023:
             df_base = pd.read_excel(file_path, sheet_name="Summary Data")
         else:
             df_base = pd.read_excel(file_path, sheet_name="C0 - Introduction")
+            
 
         df_years = pd.read_excel(file_path, sheet_name="C0.2")
 
@@ -61,6 +62,15 @@ def load_useful_sheets(year, path_raw_data):
             2020: (df_base, df_years, df_CF1, df_CF2, df_CF3),
             2021: (df_base, df_years, df_CF1, df_CF2, df_CF3),
             2022: (
+                df_base,
+                df_years,
+                df_countries,
+                df_boundaries,
+                df_CF1,
+                df_CF2,
+                df_CF3,
+            ),
+            2023: (
                 df_base,
                 df_years,
                 df_countries,
@@ -319,6 +329,7 @@ def common_final_cleaning(df_clean):
             "C6.3_C1_What were your organization’s gross global Scope 2 emissions in metric tons CO2e? - Scope 2, location-based": "CDP_CF2_location",
             "C6.3_C2_What were your organization’s gross global Scope 2 emissions in metric tons CO2e? - Scope 2, market-based (if applicable)": "CDP_CF2_market",
         }
+        
     )
     df_clean = df_clean[
         [

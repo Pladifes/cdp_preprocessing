@@ -12,6 +12,7 @@ from src.get_2019 import Get2019
 from src.get_2020 import Get2020
 from src.get_2021 import Get2021
 from src.get_2022 import Get2022
+from src.get_2023 import Get2023
 from src.utils import handle_duplicates, missing_value_imputation, clean_country_names
 
 
@@ -49,6 +50,7 @@ def clean_CDP_year(path_raw_data, path_clean_data, year, save_years):
             2020: Get2020(),
             2021: Get2021(),
             2022: Get2022(),
+            2023: Get2023(),
         }
         try:
             df_year_clean = dict_year_to_func[year].get_year_dataset(path_raw_data)
@@ -123,7 +125,7 @@ def create_CDP_clean_dataset(
             clean_CDP_year(path_raw_data, path_clean_data, year, save_years)
         )
     print("Loading of year specific datasets: Done")
-
+    
     print("Cleaning of the concatenated dataset: Start")
     df_cdp_concatenated = pd.concat(lst_df_years)
     df_cdp_clean = handle_duplicates(df_cdp_concatenated)

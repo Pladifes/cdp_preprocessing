@@ -1,9 +1,7 @@
 import unittest
 import os
 
-
 import pandas as pd
-
 
 from src.main_functions import clean_CDP_year, create_CDP_clean_dataset
 
@@ -37,6 +35,7 @@ class TestCleanCDPYear(unittest.TestCase):
             "unique_id",
             "questionnaire_year",
         ]
+        
         df_cleaned = clean_CDP_year(path_clean_data, path_clean_data, year, save_years)
         self.assertIsInstance(df_cleaned, pd.DataFrame)
         self.assertTrue(
